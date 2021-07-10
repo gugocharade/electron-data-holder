@@ -1,5 +1,5 @@
 {
-  "name": "electron-local-storage",
+  "name": "electron-data-holder",
   "version": "1.0.0",
   "description": "A simple way of storing data in electron app, save user data and app settings in simple steps.",
   "main": "index.js",
@@ -11,7 +11,11 @@
     "electron",
     "electron store"
   ],
-  "author": "abdelaziz haouache",
+  "author": {
+    "name": "abdelaziz haouache",
+    "email": "gugocharade@gmail.com"
+  },
+  "repository": "https://github.com/gugocharade/electron-data-holder",
   "license": "MIT",
   "dependencies": {
     "on-change": "^3.0.2"
