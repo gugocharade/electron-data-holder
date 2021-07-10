@@ -1,4 +1,4 @@
-# electron-local-storage
+# electron-data-holder
 
 > `A simple way of storing data in electron app, save user data and app settings in simple steps.`
 
@@ -13,7 +13,7 @@ You can store multiple files each one with a preferred name and also you can spe
 # Install
 
 ```js
-$ npm install electron-local-storage
+$ npm install electron-data-holder
 ```
 
 # Usage
@@ -26,7 +26,7 @@ In the main process call `initDB()`, this function accepts a configuration objec
 - A folder path : `string` `(not required)` : The folder path where you want to store the JSON files.
 
 ```js
-const { initDB } = require('electron-local-storage');
+const { initDB } = require('electron-data-holder');
 
 // the encryption key must be 32 characters long.
 
@@ -47,7 +47,7 @@ In the rendrer call `storeDB()`, this function accepts 2 parameters :
   - encryption : `boolean` : whether you want the data to be encrypted or not, the default is ` false`.
 
 ```js
-const { storeDB } = require('electron-local-storage');
+const { storeDB } = require('electron-data-holder');
 
 // This function will return the same object with a watcher method that will watch for changes and save the data to the JSON file.
 
