@@ -1,0 +1,19 @@
+{
+  "name": "electron-local-storage",
+  "version": "1.0.0",
+  "description": "A simple way of storing data in electron app, save user data and app settings in simple steps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "local storage",
+    "electron",
+    "electron store"
+  ],
+  "author": "abdelaziz haouache",
+  "license": "MIT",
+  "dependencies": {
+    "on-change": "^3.0.2"
+  }
+}
