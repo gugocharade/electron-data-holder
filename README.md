@@ -22,8 +22,8 @@ $ npm install electron-data-holder
 
 In the main process call `initDB()`, this function accepts a configuration object with 2 properties:
 
-- The encryption key : `string` `(not required)` : Must be 32 characters long
-- A folder path : `string` `(not required)` : The folder path where you want to store the JSON files.
+- key : `string` `(not required)` : the encryption key must be 32 characters long
+- customPath : `string` `(not required)` : The path to the folder where you want to store the JSON files.
 
 ```js
 const { initDB } = require('electron-data-holder');
@@ -49,7 +49,7 @@ In the rendrer call `storeDB()`, this function accepts 2 parameters :
 ```js
 const { storeDB } = require('electron-data-holder');
 
-// This function will return the same object with a watcher method that will watch for changes and save the data to the JSON file.
+// This function will returns a proxy with your data in it in order to watch the changes and update the JSON file.
 
 const data = storeDB(
   {
@@ -83,8 +83,64 @@ When the app is launched, it will search for the JSON files and get the data fro
 
 After writing these lines of code, you are now ready to work on your app without worrying about the data, and the beautiful thing is that there is no APIs to insert or get the data, use your data as you would do in vanilla javascript.
 
+# Manipulating data
+
+Let's use this example:
+
+```js
+const { storeDB } = require('electron-data-holder');
+
+const data = storeDB(
+  {
+    user: {
+      firstName: 'Elon',
+      lastName: 'Mask',
+    },
+    hobbies: ['learning', 'coding'],
+  },
+
+  {
+    fileName: 'dataFile',
+    encryption: true,
+  }
+);
+```
+
+## Reading data
+
+Let's log to the console the first element in the hobbies array:
+
+```js
+console.log(data.hobbies[0]); // 'learning'
+```
+
+## Modifying data
+
+Let's add "gaming" to the hobbies array:
+
+```js
+data.hobbies.push('gaming');
+
+console.log(data.hobbies); // Proxy {0: "learning", 1: "coding", 2: "gaming"}
+```
+
+Let's add an "age" property to the user object:
+
+```js
+data.user.age = 47;
+
+console.log(data.user); // Proxy {firstName: "Elon", lastName: "Mask", age: 47}
+```
+
+The `storeDB()` function returns a proxy with your data in it in order to watch the changes and update the JSON file.
+Every time you modify your data the JSON file will be updated accordingly.
+
+As you can see there is no extra stuff for reading and modifying your data and also you don't need to worry about saving it in every change, this package will handle everything for you so you can focus on building your app. HAPPY CODING
+
 # Donation
 
 If you found this package useful support me.
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/gugocharade)
+
+
