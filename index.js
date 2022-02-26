@@ -13,7 +13,7 @@ const getSavedData = (dataPath) => {
 };
 
 const saveData = (data, dataPath) => {
-  fs.writeFile(dataPath, JSON.stringify(data), 'utf8', (err) => {
+  fs.writeFileSync(dataPath, JSON.stringify(data), 'utf8', (err) => {
     console.log(err);
   });
 };
