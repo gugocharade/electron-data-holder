@@ -1,6 +1,6 @@
 {
   "name": "electron-data-holder",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple way of storing data in electron app, save user data and app settings in simple steps.",
   "main": "index.js",
   "scripts": {

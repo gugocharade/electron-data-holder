@@ -18,7 +18,7 @@ const getSavedData = (dataPath) => {
 // Async function to save data to file
 const saveData = async (data, dataPath) => {
   try {
-    await fs.promises.writeFile(dataPath, JSON.stringify(data), 'utf8');
+    fs.writeFileSync(dataPath, JSON.stringify(data), 'utf8');
   } catch (err) {
     console.error('Error saving data:', err); // Improved error handling
   }
@@ -90,10 +90,7 @@ exports.storeDB = (data, { fileName = 'data', encryption = false } = {}) => {
   }
 
   // Return reactive data object
-  return onChange(data, async function () {
-    await saveData(
-      encryption ? encrypt(JSON.stringify(this), key) : this,
-      filePath
-    );
+  return onChange(data, function () {
+    saveData(encryption ? encrypt(JSON.stringify(this), key) : this, filePath);
   });
 };
